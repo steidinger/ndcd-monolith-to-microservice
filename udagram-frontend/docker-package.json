@@ -1,0 +1,11 @@
+{
+  "name": "udagram-frontend-server",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "serve -l 8080 www"
+  },
+  "private": true,
+  "dependencies": {
+    "serve": "^11.3.2"
+  }
+}

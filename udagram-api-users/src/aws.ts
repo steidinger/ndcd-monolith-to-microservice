@@ -1,10 +1,14 @@
 import AWS = require('aws-sdk');
 import {config} from './config/config';
 
-
+if (process.env.AWS_ACCESS_KEY_ID) {
+  console.log('Using AWS access key and secret from environment');
+  console.log('access key', process.env.AWS_ACCESS_KEY_ID);
+}
+else {
 // Configure AWS
-const credentials = new AWS.SharedIniFileCredentials({profile: 'default'});
-AWS.config.credentials = credentials;
+  AWS.config.credentials = new AWS.SharedIniFileCredentials({profile: 'default'});
+}
 
 export const s3 = new AWS.S3({
   signatureVersion: 'v4',

@@ -30,3 +30,13 @@ spec:
                 secretKeyRef:
                   name: udagram-secrets
                   key: jwt_secret
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: udagram-secrets
+                  key: aws_access_key_id
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: udagram-secrets
+                  key: aws_secret_access_key

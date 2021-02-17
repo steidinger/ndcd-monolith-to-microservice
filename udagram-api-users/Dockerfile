@@ -10,6 +10,8 @@ ENV URL=http://localhost:4200
 ENV AWS_REGION=eu-central-1
 ENV AWS_PROFILE=default
 ENV AWS_BUCKET=udagram-269004290177-dev
+ENV AWS_ACCESS_KEY_ID=.
+ENV AWS_SECRET_ACCESS_KEY=.
 
 COPY . .
 RUN npm install

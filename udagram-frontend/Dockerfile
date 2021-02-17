@@ -2,9 +2,9 @@ FROM node:lts
 EXPOSE 8080
 WORKDIR /usr/src/app
 
-COPY . .
+COPY www/ ./www/
+COPY docker-package.json ./package.json
 RUN npm install
-RUN npm run build
 USER node
-CMD ["node", "./www/server.js"]
+CMD ["npm", "start"]
 
