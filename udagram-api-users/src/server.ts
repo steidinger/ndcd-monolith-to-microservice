@@ -1,6 +1,9 @@
 import 'dotenv/config'
 import cors from 'cors';
 import express from 'express';
+import morgan from 'morgan';
+import log from './log';
+
 import {sequelize} from './sequelize';
 
 import {IndexRouter} from './controllers/v0/index.router';
@@ -11,15 +14,15 @@ import {V0_USER_MODELS} from './controllers/v0/model.index';
 
 
 (async (): Promise<void> => {
-  console.log(`Connecting to database ${config.host} / ${config.database}`);
+  log(`Connecting to database ${config.host} / ${config.database}`);
   await sequelize.addModels(V0_USER_MODELS);
-  console.log('Syncing db');
+  log('Syncing db');
   await sequelize.sync();
-  console.log('Starting server');
+  log('Starting server');
   const app = express();
 
   app.use(bodyParser.json());
-
+  app.use(morgan(':date[iso] :method :url :status'));
   app.use(cors({
     allowedHeaders: [
       'Origin', 'X-Requested-With',
@@ -40,7 +43,7 @@ import {V0_USER_MODELS} from './controllers/v0/model.index';
 
   // Start the Server
   app.listen( config.port, () => {
-    console.log( `server listening on ${config.port}` );
-    console.log( `press CTRL+C to stop server` );
+    log( `server listening on ${config.port}` );
+    log( `press CTRL+C to stop server` );
   } );
 })();

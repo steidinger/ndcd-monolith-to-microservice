@@ -13,13 +13,3 @@ export const config = {
     'secret': process.env.JWT_SECRET,
   },
 };
-
-const logConfig = {
-  ...config,
-  password: (config.password || "").substring(0, 4) + "*****",
-  jwt: {
-    secret: (config.jwt.secret || "").substring(0, 4) + "*****",
-  }
-};
-
-console.log('Using config', logConfig);
