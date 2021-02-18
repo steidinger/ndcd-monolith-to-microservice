@@ -6,7 +6,7 @@ services:
   - docker
 
 install:
-  - echo "nothing to install"
+  - npm --prefix udagram-frontend install
 
 before_script:
   - echo "no tests"
@@ -15,6 +15,7 @@ script:
   - docker --version # print the version for logging
   - docker build -t steidinger/udagram-api-feed ./udagram-api-feed/
   - docker build -t steidinger/udagram-api-users ./udagram-api-users/
+  - npm --prefix udagram-frontend run build
   - docker build -t steidinger/udagram-frontend ./udagram-frontend
   - docker build -t steidinger/udagram-reverse-proxy ./reverse-proxy
 
