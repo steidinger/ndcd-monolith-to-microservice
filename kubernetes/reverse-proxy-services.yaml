@@ -5,11 +5,11 @@ metadata:
     service: udagram-reverse-proxy
   name: udagram-reverse-proxy-svc
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
-    - port: 8080
+    - port: 80
       targetPort: 8080
-      nodePort: 30080
+      # nodePort: 30080
   selector:
     service: udagram-reverse-proxy
     
